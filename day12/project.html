@@ -149,7 +149,6 @@
     let count=0
 
     function addtocart(name,price){
-      
       count++
       let cartcount=document.getElementById('cartcount')
       cartcount.innerHTML=count
@@ -157,6 +156,22 @@
       let totalcontainer=document.getElementById('total')
       total+=price
       totalcontainer.innerHTML='Total '+total
+
+      let product={
+        name,price
+      }
+      cart.push(product)
+    
+      let cartlistcontainer=document.getElementById('cartlist')
+      cartlistcontainer.innerHTML=''
+      for (let i of cart){
+        let output=`
+        <div class='cart-item'>
+         <h3>${i.name}</h3>  
+         <p>${i.price}</p>  
+        </div>`
+        cartlistcontainer.innerHTML+=output
+      }
     }
    
 
