@@ -117,21 +117,21 @@
       <div><img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500" alt=""></div>
       <h3>Nike Shoes</h3>
       <p>2000</p>
-      <button>Add to cart</button>
+      <button onclick="addtocart('nike',2000)">Add to cart</button>
     </div>
 
         <div class="card">
       <div><img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500" alt=""></div>
       <h3>Smart watch</h3>
       <p>1500</p>
-      <button>Add to cart</button>
+           <button onclick="addtocart('smart watch',1500)">Add to cart</button>
     </div>
 
         <div class="card">
       <div><img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500" alt=""></div>
       <h3>Headphones</h3>
       <p>1200</p>
-      <button>Add to cart</button>
+           <button onclick="addtocart('headphones',1200)">Add to cart</button>
     </div>
   </div>
 
@@ -142,6 +142,28 @@
     </div>
     <div id="total">Total 0</div>
   </div>
+  
+  <script>
+    let cart=[]
+    let total=0
+    let count=0
+
+    function addtocart(name,price){
+      
+      count++
+      let cartcount=document.getElementById('cartcount')
+      cartcount.innerHTML=count
+
+      let totalcontainer=document.getElementById('total')
+      total+=price
+      totalcontainer.innerHTML='Total '+total
+    }
+   
+
+
+
+
+  </script>
 
 
 
