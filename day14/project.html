@@ -93,7 +93,7 @@
 <body>
     <div class="container">
         <h1>User Registration</h1>
-        <form action="">
+        <form action="" id="registerform">
             <div class="form-group">
                 <label for="">Full Name</label>
                 <input type="text" placeholder="Enter your name" id="name">
@@ -115,13 +115,71 @@
                 <small id="cpassworderror"></small>
             </div>
             <button class="show-btn">Show Password</button>
-            <button class="submit-btn">Submit</button>
+            <button type="submit"  class="submit-btn">Submit</button>
         </form>
 
-        <div id="successmessage">fd</div>
+        <div id="successmessage">   </div>
     </div>
 
-   
+   <script>
+    let form=document.getElementById('registerform')
+    form.onsubmit=function (e){
+        e.preventDefault()
+
+        let name=document.getElementById('name')
+        let mail=document.getElementById('mail')
+        let pass=document.getElementById('password')
+        let cpass=document.getElementById('cpassword')
+        
+        let nameerror=document.getElementById('nameerror')
+        let mailerror=document.getElementById('mailerror')
+        let passerror=document.getElementById('passworderror')
+        let cpasserror=document.getElementById('cpassworderror') 
+       
+        let success=document.getElementById('successmessage')
+
+        nameerror.innerHTML=''
+        mailerror.innerHTML=''
+        passerror.innerHTML=''
+        cpasserror.innerHTML=''
+        success.innerHTML=''
+
+        let isvalid=true;
+        if(name.value==""){
+            nameerror.innerHTML='Name is required'
+            isvalid=false;
+        }
+        let emailpattern=/[A-Za-z0-9._]+@[a-z]+\.[a-z]{3}/
+        if(!mail.value.match(emailpattern)){
+            mailerror.innerHTML='Enter valid email'
+            isvalid=false;
+        }
+
+        let passwordpattern=/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[@#$%^&*]).{8}/
+        if(!pass.value.match(passwordpattern)){
+            passerror.innerHTML='Password must contain uppercase, number ,special and minimum 8 characters'
+            isvalid=false;
+        }
+
+        if(cpass.value==""){
+            cpasserror.innerHTML='password is required'
+            isvalid=false
+        }else if(cpass.value!=pass.value){
+            cpasserror.innerHTML='password is not matching'
+            isvalid=false;
+        }
+
+        if(isvalid){
+            success.innerHTML='Form Submitted Successfully'
+        }
+        name.value=''
+        mail.value=''
+        pass.value=''
+        cpass.value=''
+        
+    }
+
+   </script>
 
 
 </body>
