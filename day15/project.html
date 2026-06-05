@@ -81,7 +81,7 @@
       <h1>Weather app</h1>
       <div class="search-box">
         <input type="text" placeholder="enter city name" id="city">
-        <button onClick="getweatherdata()">Search</button>
+        <button  onclick="getweatherdata()">Search</button>
       </div>
       <div class="weather-box">
         <h2 id="name"></h2>
@@ -90,6 +90,28 @@
         <h3 id="humid"></h3>
       </div>
     </div>
+
+    <script>
+      async function getweatherdata(){
+        let city=document.getElementById('city')
+
+        let data=await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city.value}&units=metric&appid=466ddaa21a8de191e9f608bd11a56acb`)
+        let weatherdata=await data.json()
+     
+        let name=document.getElementById('name')
+        name.innerHTML=city.value
+
+        let temp=document.getElementById('temp')
+        temp.innerHTML=weatherdata.main.temp
+      
+        let state=document.getElementById('state')
+        state.innerHTML=weatherdata.weather[0].main
+        
+        let humid=document.getElementById('humid')
+        humid.innerHTML=weatherdata.main.humidity
+
+      }
+    </script>
 
 
    
